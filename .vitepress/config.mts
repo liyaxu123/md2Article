@@ -1,31 +1,35 @@
-import { defineConfig } from 'vitepress'
-
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
-  title: "我的作文笔记",
-  description: "跟我一起学习写作文",
+export default {
+  title: "墨韵文苑",
+  description: "优秀作文展示与分享平台",
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: '首页', link: '/' },
-      { text: '分类浏览', link: '/markdown-examples' },
-      { text: '精选推荐', link: '/markdown-examples' },
-      { text: '投稿分享', link: '/markdown-examples' },
-      { text: '关于我们', link: '/markdown-examples' },
+      { text: "首页", link: "/" },
+      { text: "分类浏览", link: "/markdown-examples" },
+      { text: "精选推荐", link: "/markdown-examples" },
+      { text: "投稿分享", link: "/markdown-examples" },
+      { text: "关于我们", link: "/markdown-examples" },
     ],
 
     sidebar: [
       {
-        text: '首页',
+        text: "首页",
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
+          { text: "Markdown Examples", link: "/markdown-examples" },
+          { text: "Runtime API Examples", link: "/api-examples" },
+        ],
+      },
     ],
 
-    // socialLinks: [
-    //   { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    // ]
-  }
-})
+    footer: {
+      copyright: "2023 墨韵文苑 - 优秀作文展示与分享平台. 保留所有权利.",
+      contactUs: {
+        emile: "contact@moyunwenyuan.com",
+        phone: "123-456-7890",
+        wx: "",
+        weibo: "",
+        qq: "",
+      },
+    },
+  },
+};
