@@ -12,59 +12,34 @@ featured:
   title: 精选推荐
   action:
     text: 查看更多
-    link: /recommend
-  items:
-  - title: 旧轨还乡
-    link: /旧轨还乡
-    cover: images/旧轨还乡.png
-    details: 姥姥姥爷牵着我，踏上一趟绿皮火车，自杭州启程，摇晃过二十五小时，直达内蒙古乌兰察布。这是我儿时归乡的记忆...
-    category: 散文
-    author: 张潇冉
-    view: 1342
-    love: 238
-  - title: 时光列车
-    link: /时光列车
-    cover: images/book.jpg
-    details: 人生中总有一些特殊的时刻，让我们在不经意间成长。那是一个平凡的下午，却因为一件小事让我明白了责任的意义...
-    category: 记叙文
-    author: AI
-    view: 1342
-    love: 238
-  - title: 春天里的遐想
-    link: /essay-detail
-    cover: images/spring.jpg
-    details: 春天悄然而至，万物复苏。漫步在林间小道，感受着微风拂面，聆听鸟儿的歌唱，一切都是那么美好...
-    category: 散文
-    author: 王丽
-    view: 987
-    love: 176
+    link: /category/all
 
 
 categories:
   title: 作文分类
   items:
   - title: 记叙文
-    link: /categories
+    link: /category/记叙文
     details: 讲述故事，记录生活
     icon: bi bi-book
   - title: 议论文
-    link: /categories
+    link: /category/议论文
     details: 阐述观点，论证思想
     icon: bi bi-chat-quote
   - title: 描写文
-    link: /categories
+    link: /category/描写文
     details: 描绘景象，刻画人物
     icon: bi bi-image
   - title: 散文
-    link: /categories
+    link: /category/散文
     details: 抒发情感，表达思想
     icon: bi bi-pencil
   - title: 说明文
-    link: /categories
+    link: /category/说明文
     details: 解释事物，阐明原理
     icon: bi bi-award
   - title: 应用文
-    link: /categories
+    link: /category/应用文
     details: 实用性强，形式多样
     icon: bi bi-stars
 
@@ -119,4 +94,3 @@ share:
     text: 立即投稿
     link: /recommend
 ---
-

@@ -7,7 +7,7 @@ const { frontmatter: fm } = useData();
   <section class="latest" v-if="fm.latest">
     <div class="container">
       <h2 class="section-title">{{ fm.latest.title }}</h2>
-      <div class="latest-grid" v-if="fm.featured.items.length > 0">
+      <div class="latest-grid" v-if="fm.latest.items.length > 0">
         <div
           class="essay-card"
           v-for="item in fm.latest.items"

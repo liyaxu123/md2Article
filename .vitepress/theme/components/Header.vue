@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { useData, useRoute } from "vitepress";
+import { useData, useRoute, useRouter } from "vitepress";
 const { site } = useData();
 const route = useRoute();
+const router = useRouter();
 
 const isActive = (link: string) => {
   return route.path === link;
 };
 
 const goHome = () => {
-  window.location.href = "/";
+  router.go("/");
 };
 </script>
 

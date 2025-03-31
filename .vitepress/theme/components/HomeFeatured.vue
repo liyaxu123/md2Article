@@ -1,39 +1,54 @@
 <script setup lang="ts">
 import { useData } from "vitepress";
+import { data as postsData } from "../articles.data";
 const { frontmatter: fm } = useData();
+
+console.log("posts:", postsData);
 </script>
 
 <template>
   <section class="featured" v-if="fm.featured">
     <div class="container">
       <h2 class="section-title">{{ fm.featured.title }}</h2>
-      <div class="featured-grid" v-if="fm.featured.items.length > 0">
+      <div class="featured-grid" v-if="postsData.featureds.length > 0">
         <!-- 卡片 -->
         <div
           class="featured-card"
-          v-for="item in fm.featured.items"
-          :key="item.title"
+          v-for="item in postsData.featureds"
+          :key="item.url"
         >
           <div
             class="card-image"
-            :style="{ backgroundImage: `url(${item.cover})` }"
+            :style="{ backgroundImage: `url(${item.frontmatter.cover})` }"
           ></div>
           <div class="card-content">
-            <span class="category">{{ item.category }}</span>
+            <span class="category">{{ item.frontmatter.category }}</span>
             <h3>
-              <a :href="item.link">{{ item.title }}</a>
+              <a :href="item.url">{{ item.frontmatter.title }}</a>
             </h3>
             <p>
-              {{ item.details }}
+              {{ item.frontmatter.details }}
             </p>
             <div class="card-meta">
-              <span><i class="bi bi-person"></i> {{ item.author }}</span>
-              <span><i class="bi bi-eye"></i> {{ item.view }}</span>
-              <span><i class="bi bi-hand-thumbs-up"></i> {{ item.love }}</span>
+              <span
+                ><i class="bi bi-person"></i>
+                {{ item.frontmatter.author }}</span
+              >
+              <span><i class="bi bi-eye"></i> 1342</span>
+              <span><i class="bi bi-hand-thumbs-up"></i> 238</span>
             </div>
           </div>
         </div>
       </div>
+      <!-- 添加空状态展示 -->
+      <div class="empty-state" v-else>
+        <div class="empty-icon">
+          <i class="bi bi-journal-bookmark"></i>
+        </div>
+        <h3>暂无{{ fm.featured.title }}文章</h3>
+        <p>快来添加一篇作文，并将其 md 文件头部的 frontmatter 里的 isFeatured 设置为 true 试试吧</p>
+      </div>
+
       <div class="view-more" v-if="fm.featured.action">
         <a :href="fm.featured.action.link" class="btn">{{
           fm.featured.action.text
@@ -96,6 +111,12 @@ const { frontmatter: fm } = useData();
 .card-content p {
   color: #666;
   margin-bottom: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 4.5em;
 }
 
 .card-meta {
@@ -112,6 +133,33 @@ const { frontmatter: fm } = useData();
 
 .card-meta i {
   margin-right: 5px;
+}
+
+/* 空状态样式 */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  color: #d0d0d0;
+  margin-bottom: 20px;
+}
+
+.empty-state h3 {
+  font-size: 1.5rem;
+  color: #5a6268;
+  margin-bottom: 10px;
+}
+
+.empty-state p {
+  color: #888;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .view-more {
