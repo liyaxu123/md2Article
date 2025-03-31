@@ -75,4 +75,38 @@ const { frontmatter: fm } = useData();
 .search-box button:hover {
   background-color: #6a5c3d;
 }
+
+@media (max-width: 992px) {
+  .hero-content h2 {
+    font-size: 2.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    padding: 70px 0;
+  }
+
+  .hero-content h2 {
+    font-size: 1.7rem;
+  }
+
+  .search-box input {
+    padding: 12px 15px;
+  }
+
+  .search-box button {
+    padding: 0 15px;
+  }
+}
 </style>

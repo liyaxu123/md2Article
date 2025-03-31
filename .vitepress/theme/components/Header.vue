@@ -94,4 +94,23 @@ nav ul li a:hover::after,
 nav ul li a.active::after {
   width: 100%;
 }
+
+@media (max-width: 768px) {
+  header .container {
+    flex-direction: column;
+  }
+
+  .logo {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  nav ul {
+    justify-content: center;
+  }
+
+  nav ul li {
+    margin: 0 10px;
+  }
+}
 </style>

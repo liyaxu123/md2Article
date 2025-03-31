@@ -107,4 +107,22 @@ const { frontmatter: fm } = useData();
   text-align: center;
   margin-top: 40px;
 }
+
+@media (max-width: 992px) {
+  .latest-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .latest-grid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+}
 </style>

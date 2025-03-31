@@ -139,4 +139,30 @@ footer {
   color: #bbb;
   font-size: 0.9rem;
 }
+
+@media (max-width: 576px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-logo,
+  .footer-links,
+  .footer-contact {
+    text-align: center;
+  }
+
+  .footer-links h3::after,
+  .footer-contact h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .footer-contact p {
+    justify-content: center;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+}
 </style>

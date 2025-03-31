@@ -6,7 +6,7 @@ hero:
   title: 发现优秀作文，激发写作灵感
   subTitle: "这里汇集了各类优秀作文，我们一起在文字的海洋中徜徉"
   searchPlaceholder: 搜索作文标题、关键词或作者...
-  bg: https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80
+  bg: images/hero_bg.jpg
 
 featured:
   title: 精选推荐
@@ -24,23 +24,15 @@ featured:
     love: 238
   - title: 时光列车
     link: /时光列车
-    cover: https://images.unsplash.com/photo-1519791883288-dc8bd696e667?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80
+    cover: images/book.jpg
     details: 人生中总有一些特殊的时刻，让我们在不经意间成长。那是一个平凡的下午，却因为一件小事让我明白了责任的意义...
     category: 记叙文
     author: AI
     view: 1342
     love: 238
-  # - title: 科技发展与人文关怀
-  #   link: /api-examples
-  #   cover: https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80
-  #   details: 在科技高速发展的今天，我们不应忘记人文关怀的重要性。科技应当为人类服务，而非主宰人类的生活...
-  #   category: 议论文
-  #   author: 张华
-  #   view: 1156
-  #   love: 208
   - title: 春天里的遐想
     link: /essay-detail
-    cover: https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80
+    cover: images/spring.jpg
     details: 春天悄然而至，万物复苏。漫步在林间小道，感受着微风拂面，聆听鸟儿的歌唱，一切都是那么美好...
     category: 散文
     author: 王丽
@@ -122,7 +114,7 @@ latest:
 share:
   title: 分享你的优秀作文
   desc: 你有好的作文作品吗？欢迎在这里分享，让更多人看到你的才华！
-  bg: https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80
+  bg: images/share_bg.jpg
   action:
     text: 立即投稿
     link: /recommend

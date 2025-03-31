@@ -64,4 +64,16 @@ const { frontmatter: fm } = useData();
 .category-card p {
   color: #888;
 }
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .categories-grid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+}
 </style>
