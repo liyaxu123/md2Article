@@ -79,8 +79,8 @@ export default createContentLoader("*.md", {
     // 获取文章分类数据
     resData.categorys = getCategorys(resData.allPosts);
 
-    // 获取精选推荐的文章（最多5篇）
-    resData.featureds = getFeaturedPosts(resData.allPosts, 5);
+    // 获取精选推荐的文章（最多6篇）
+    resData.featureds = getFeaturedPosts(resData.allPosts, 6);
 
     return resData;
   },
