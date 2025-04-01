@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useData } from "vitepress";
+import { useData, withBase } from "vitepress";
 const { site } = useData();
 </script>
 
@@ -15,7 +15,7 @@ const { site } = useData();
           <h3>快速链接</h3>
           <ul>
             <li v-for="item in site.themeConfig.nav">
-              <a :href="item.link">{{ item.text }}</a>
+              <a :href="withBase(item.link)">{{ item.text }}</a>
             </li>
           </ul>
         </div>

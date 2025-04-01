@@ -1,6 +1,6 @@
 // https://vitepress.dev/reference/site-config
 export default {
-  base: '/',
+  base: '/md2Article/',
   title: "墨韵文苑",
   description: "优秀作文展示与分享平台",
   themeConfig: {

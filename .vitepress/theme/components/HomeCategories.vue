@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useData } from "vitepress";
+import { useData, withBase } from "vitepress";
 const { frontmatter: fm } = useData();
 </script>
 
@@ -9,7 +9,7 @@ const { frontmatter: fm } = useData();
       <h2 class="section-title">{{ fm.categories.title }}</h2>
       <div class="categories-grid" v-if="fm.categories.items.length > 0">
         <a
-          :href="item.link"
+          :href="withBase(item.link)"
           class="category-card"
           v-for="item in fm.categories.items"
           :key="item.title"

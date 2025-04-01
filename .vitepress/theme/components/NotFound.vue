@@ -8,13 +8,15 @@
         抱歉，您访问的页面不存在或已被移动到其他位置。
       </p>
       <div class="action-buttons">
-        <a class="btn" href="/">返回首页</a>
+        <a class="btn" :href="withBase('/')">返回首页</a>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { withBase } from "vitepress";
+
 const goBack = () => {
   window.history.back();
 };

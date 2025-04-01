@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useData } from "vitepress";
+import { useData, withBase } from "vitepress";
 const { frontmatter: fm } = useData();
 </script>
 
@@ -15,7 +15,7 @@ const { frontmatter: fm } = useData();
       <div class="share-content">
         <h2>{{ fm.share.title }}</h2>
         <p>{{ fm.share.desc }}</p>
-        <a :href="fm.share.action.link" class="btn btn-primary">{{
+        <a :href="withBase(fm.share.action.link)" class="btn btn-primary">{{
           fm.share.action.text
         }}</a>
       </div>

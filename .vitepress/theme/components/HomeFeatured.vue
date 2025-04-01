@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useData } from "vitepress";
+import { useData, withBase } from "vitepress";
 import { data as postsData } from "../articles.data";
 const { frontmatter: fm } = useData();
 
@@ -24,7 +24,7 @@ console.log("posts:", postsData);
           <div class="card-content">
             <span class="category">{{ item.frontmatter.category }}</span>
             <h3>
-              <a :href="item.url">{{ item.frontmatter.title }}</a>
+              <a :href="withBase(item.url)">{{ item.frontmatter.title }}</a>
             </h3>
             <p>
               {{ item.frontmatter.details }}
@@ -46,11 +46,14 @@ console.log("posts:", postsData);
           <i class="bi bi-journal-bookmark"></i>
         </div>
         <h3>暂无{{ fm.featured.title }}文章</h3>
-        <p>快来添加一篇作文，并将其 md 文件头部的 frontmatter 里的 isFeatured 设置为 true 试试吧</p>
+        <p>
+          快来添加一篇作文，并将其 md 文件头部的 frontmatter 里的 isFeatured
+          设置为 true 试试吧
+        </p>
       </div>
 
       <div class="view-more" v-if="fm.featured.action">
-        <a :href="fm.featured.action.link" class="btn">{{
+        <a :href="withBase(fm.featured.action.link)" class="btn">{{
           fm.featured.action.text
         }}</a>
       </div>

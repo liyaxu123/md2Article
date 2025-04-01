@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useData, useRoute, useRouter } from "vitepress";
+import { useData, useRoute, useRouter, withBase } from "vitepress";
 const { site } = useData();
 const route = useRoute();
 const router = useRouter();
@@ -9,7 +9,7 @@ const isActive = (link: string) => {
 };
 
 const goHome = () => {
-  router.go("/");
+  router.go(withBase("/"));
 };
 </script>
 
@@ -23,9 +23,11 @@ const goHome = () => {
       <nav v-if="site.themeConfig.nav.length">
         <ul>
           <li v-for="item in site.themeConfig.nav">
-            <a :href="item.link" :class="{ active: isActive(item.link) }">{{
-              item.text
-            }}</a>
+            <a
+              :href="withBase(item.link)"
+              :class="{ active: isActive(item.link) }"
+              >{{ item.text }}</a
+            >
           </li>
         </ul>
       </nav>
