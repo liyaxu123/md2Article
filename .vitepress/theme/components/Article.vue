@@ -5,22 +5,27 @@ const { frontmatter: fm } = useData();
 
 <template>
   <main class="essay-detail">
-    <div class="container">
+    <div class="article-detail-container">
       <article>
-        <header class="essay-header">
-          <h1 class="essay-title">{{ fm.title }}</h1>
-          <div class="essay-meta">
-            <span><i class="bi bi-person"></i> {{ fm.author }}</span>
+        <!-- 文章头部 -->
+        <div class="article-header">
+          <h1 class="article-title">{{ fm.title }}</h1>
+          <div class="article-meta">
+            <span><i class="bi bi-person"></i> 作者：{{ fm.author }}</span>
             <span><i class="bi bi-calendar3"></i> {{ fm.time }}</span>
+            <span><i class="bi bi-book"></i> {{ fm.category }}</span>
             <span><i class="bi bi-eye"></i> 1342 次阅读</span>
             <span><i class="bi bi-hand-thumbs-up"></i> 238 次点赞</span>
-            <span class="essay-category">{{ fm.category }}</span>
           </div>
-        </header>
+          <!-- 封面图 -->
+          <div
+            class="article-cover"
+            :style="{ backgroundImage: `url(${fm.cover})` }"
+          ></div>
+        </div>
 
+        <!-- 文章内容 -->
         <div class="essay-content">
-          <img :src="fm.cover" alt="封面图" v-if="fm.cover" />
-
           <Content />
         </div>
       </article>
@@ -30,76 +35,65 @@ const { frontmatter: fm } = useData();
 
 <style scoped>
 /* 作文详情页特定样式 */
-.essay-detail {
-  padding: 60px 0;
+.article-detail-container {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 0 2rem;
 }
 
-.essay-header {
-  margin-bottom: 40px;
-  padding: 25px;
-  background-color: #f9f7f2;
-  border-radius: 12px;
-  border-left: 4px solid #8c7853;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-  position: relative;
-  overflow: hidden;
+/* 文章头部 */
+.article-header {
+  margin-bottom: 2.5rem;
+  text-align: center;
 }
 
-.essay-header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100px;
-  height: 100px;
-  background: radial-gradient(
-    circle at top right,
-    rgba(140, 120, 83, 0.1),
-    transparent 70%
-  );
-  z-index: 0;
+.article-title {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: #333;
+  font-weight: 600;
+  line-height: 1.4;
 }
 
-.essay-title {
-  font-size: 2.5rem;
-  color: #5a6268;
-  margin-bottom: 20px;
-  font-weight: 700;
-}
-
-.essay-meta {
+.article-meta {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  margin-bottom: 25px;
-  color: #888;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  color: #999;
 }
 
-.essay-meta span {
-  margin-right: 20px;
+.article-meta span {
+  margin: 0 1rem;
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
 }
 
-.essay-meta i {
-  margin-right: 5px;
+.article-meta i {
+  margin-right: 0.3rem;
+  font-size: 1.1rem;
 }
 
-.essay-category {
-  display: inline-block;
-  padding: 5px 12px;
-  background-color: #f0ebe1;
-  color: #8c7853;
-  border-radius: 20px;
-  font-size: 0.9rem;
+.article-cover {
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* 文章内容 */
 .essay-content {
   font-size: 1.1rem;
   line-height: 1.8;
   color: #444;
-  margin-bottom: 40px;
+  background-color: #fff;
+  padding: 3rem;
+  border-radius: 5px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 3rem;
 }
 
 .essay-content :deep(h1) {
@@ -113,13 +107,37 @@ const { frontmatter: fm } = useData();
 
 .essay-content :deep(img) {
   max-width: 100%;
-  margin: 30px auto;
+  height: auto;
   display: block;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  border-radius: 3px;
+}
+
+.essay-content :deep(blockquote) {
+  border-left: 3px solid #e0d4c4;
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  color: #666;
+  font-style: italic;
+}
+
+.essay-content :deep(blockquote p) {
+  text-indent: 0;
 }
 
 @media (max-width: 768px) {
+  .article-detail-container {
+    padding: 0 1rem;
+  }
+
+  .essay-content {
+    padding: 1.5rem;
+  }
+
+  .article-cover {
+    height: 250px;
+  }
+
   .essay-title {
     font-size: 2rem;
   }
@@ -135,9 +153,25 @@ const { frontmatter: fm } = useData();
     max-width: 450px;
     margin: 0 auto;
   }
+
+  .article-meta {
+    justify-content: space-between;
+  }
 }
 
 @media (max-width: 576px) {
+  .article-detail-container {
+    padding: 0 1rem;
+  }
+
+  .essay-content {
+    padding: 1.5rem;
+  }
+
+  .article-cover {
+    height: 250px;
+  }
+
   .essay-title {
     font-size: 1.7rem;
   }
