@@ -9,7 +9,7 @@ export default {
       { text: "分类浏览", link: "/markdown-examples" },
       { text: "精选推荐", link: "/markdown-examples" },
       { text: "投稿分享", link: "/markdown-examples" },
-      { text: "关于我们", link: "/markdown-examples" },
+      { text: "关于我们", link: "/about.html" },
     ],
 
     sidebar: [

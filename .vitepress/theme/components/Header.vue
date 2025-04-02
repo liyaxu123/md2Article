@@ -25,7 +25,7 @@ const goHome = () => {
           <li v-for="item in site.themeConfig.nav">
             <a
               :href="withBase(item.link)"
-              :class="{ active: isActive(item.link) }"
+              :class="{ active: isActive(withBase(item.link)) }"
               >{{ item.text }}</a
             >
           </li>
