@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useData, withBase } from "vitepress";
 import { data as postsData } from "../articles.data";
+import ArticleCard from "./ArticleCard.vue";
 const { frontmatter: fm } = useData();
 
 console.log("posts:", postsData);
@@ -11,34 +12,17 @@ console.log("posts:", postsData);
     <div class="container">
       <h2 class="section-title">{{ fm.featured.title }}</h2>
       <div class="featured-grid" v-if="postsData.featureds.length > 0">
-        <!-- 卡片 -->
-        <div
-          class="featured-card"
+        <!-- 文章卡片 -->
+        <ArticleCard
           v-for="item in postsData.featureds"
           :key="item.url"
-        >
-          <div
-            class="card-image"
-            :style="{ backgroundImage: `url(${item.frontmatter.cover})` }"
-          ></div>
-          <div class="card-content">
-            <span class="category">{{ item.frontmatter.category }}</span>
-            <h3>
-              <a :href="withBase(item.url)">{{ item.frontmatter.title }}</a>
-            </h3>
-            <p>
-              {{ item.frontmatter.details }}
-            </p>
-            <div class="card-meta">
-              <span
-                ><i class="bi bi-person"></i>
-                {{ item.frontmatter.author }}</span
-              >
-              <span><i class="bi bi-eye"></i> 1342</span>
-              <span><i class="bi bi-hand-thumbs-up"></i> 238</span>
-            </div>
-          </div>
-        </div>
+          :title="item.frontmatter.title"
+          :url="withBase(item.url)"
+          :cover="item.frontmatter.cover"
+          :category="item.frontmatter.category"
+          :details="item.frontmatter.details"
+          :author="item.frontmatter.author"
+        />
       </div>
       <!-- 添加空状态展示 -->
       <div class="empty-state" v-else>
@@ -70,72 +54,6 @@ console.log("posts:", postsData);
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 30px;
-}
-
-.featured-card {
-  background-color: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.featured-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-}
-
-.card-image {
-  height: 200px;
-  background-size: cover;
-  background-position: center;
-}
-
-.card-content {
-  padding: 25px;
-}
-
-.category {
-  display: inline-block;
-  padding: 5px 12px;
-  background-color: #f0ebe1;
-  color: #8c7853;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  margin-bottom: 15px;
-}
-
-.card-content h3 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-  color: #5a6268;
-}
-
-.card-content p {
-  color: #666;
-  margin-bottom: 20px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-height: 4.5em;
-}
-
-.card-meta {
-  display: flex;
-  color: #888;
-  font-size: 0.9rem;
-}
-
-.card-meta span {
-  margin-right: 15px;
-  display: flex;
-  align-items: center;
-}
-
-.card-meta i {
-  margin-right: 5px;
 }
 
 /* 空状态样式 */

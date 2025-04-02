@@ -6,6 +6,7 @@ import Header from "./Header.vue";
 import Footer from "./Footer.vue";
 import Article from "./Article.vue";
 import About from "./About.vue";
+import Category from "./Category.vue";
 const { page, frontmatter } = useData();
 </script>
 
@@ -16,6 +17,7 @@ const { page, frontmatter } = useData();
   <div v-else>
     <Home v-if="frontmatter.layout === 'home'" />
     <About v-else-if="frontmatter.layout === 'about'" />
+    <Category v-else-if="frontmatter.layout === 'category'" />
     <!-- 此处将渲染 markdown 内容 -->
     <Article v-else />
   </div>

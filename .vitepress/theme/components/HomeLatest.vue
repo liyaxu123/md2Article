@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useData, withBase } from "vitepress";
+import SimpleArticleCard from "./SimpleArticleCard.vue";
 const { frontmatter: fm } = useData();
 </script>
 
@@ -8,23 +9,17 @@ const { frontmatter: fm } = useData();
     <div class="container">
       <h2 class="section-title">{{ fm.latest.title }}</h2>
       <div class="latest-grid" v-if="fm.latest.items.length > 0">
-        <div
-          class="essay-card"
+        <!-- 作文卡片 -->
+        <SimpleArticleCard
           v-for="item in fm.latest.items"
           :key="item.title"
-        >
-          <h3>
-            <a :href="withBase(item.link)">{{ item.title }}</a>
-          </h3>
-          <p>
-            {{ item.details }}
-          </p>
-          <div class="card-meta">
-            <span><i class="bi bi-person"></i> {{ item.author }}</span>
-            <span><i class="bi bi-calendar3"></i> {{ item.time }}</span>
-            <span class="category">{{ item.category }}</span>
-          </div>
-        </div>
+          :title="item.title"
+          :link="withBase(item.link)"
+          :time="item.time"
+          :category="item.category"
+          :details="item.details"
+          :author="item.author"
+        />
       </div>
       <div class="view-more">
         <a :href="withBase(fm.latest.action.link)" class="btn">{{
@@ -44,63 +39,6 @@ const { frontmatter: fm } = useData();
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 30px;
-}
-
-.essay-card {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 25px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.essay-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-.essay-card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 15px;
-}
-
-.essay-card h3 a {
-  color: #5a6268;
-}
-
-.essay-card h3 a:hover {
-  color: #8c7853;
-}
-
-.essay-card p {
-  color: #666;
-  margin-bottom: 20px;
-}
-
-.card-meta {
-  display: flex;
-  color: #888;
-  font-size: 0.9rem;
-}
-
-.card-meta span {
-  margin-right: 15px;
-  display: flex;
-  align-items: center;
-}
-
-.card-meta i {
-  margin-right: 5px;
-}
-
-.category {
-  display: inline-block;
-  padding: 5px 12px;
-  background-color: #f0ebe1;
-  color: #8c7853;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  margin-bottom: 15px;
 }
 
 .view-more {
