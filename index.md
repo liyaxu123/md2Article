@@ -42,6 +42,10 @@ categories:
     link: /category?type=应用文
     details: 实用性强，形式多样
     icon: bi bi-stars
+  - title: 诗歌
+    link: /category?type=诗歌
+    details: 优美的文字，表达情感
+    icon: bi bi-palette
 
 latest:
   title: 最新上传
