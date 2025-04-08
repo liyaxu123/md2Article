@@ -1,9 +1,10 @@
 // https://vitepress.dev/reference/site-config
 export default {
-  base: '/md2Article/',
+  base: "/md2Article/",
   title: "墨韵文苑",
   description: "优秀作文展示与分享平台",
   themeConfig: {
+    // 顶部导航配置
     nav: [
       { text: "首页", link: "/" },
       { text: "分类浏览", link: "/category.html" },
@@ -12,16 +13,7 @@ export default {
       { text: "关于我们", link: "/about.html" },
     ],
 
-    sidebar: [
-      {
-        text: "首页",
-        items: [
-          { text: "Markdown Examples", link: "/markdown-examples" },
-          { text: "Runtime API Examples", link: "/api-examples" },
-        ],
-      },
-    ],
-
+    // 页脚配置
     footer: {
       copyright: "2023 墨韵文苑 - 优秀作文展示与分享平台. 保留所有权利.",
       contactUs: {

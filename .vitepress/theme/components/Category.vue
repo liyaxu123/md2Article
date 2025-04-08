@@ -1,14 +1,27 @@
 <script setup lang="ts">
 import CategoryAside from "./CategoryAside.vue";
 import CategoryContent from "./CategoryContent.vue";
+import { ref, onMounted } from "vue";
+
+const curCategory = ref();
+
+onMounted(() => {
+  // 初始化时获取参数
+  const url = new URL(window.location.href);
+  curCategory.value = url.searchParams.get("type");
+});
+
+const handleChange = (type) => {
+  curCategory.value = type;
+};
 </script>
 
 <template>
   <div class="main-container">
     <!-- 侧边栏 -->
-    <CategoryAside />
+    <CategoryAside :category="curCategory" @onChange="handleChange" />
     <!-- 作文展示区 -->
-    <CategoryContent />
+    <CategoryContent :category="curCategory" />
   </div>
 </template>
 

@@ -12,35 +12,9 @@ export { data };
 
 // 封装统计分类的函数
 function getCategorys(posts: any[]): any[] {
-  const categoryMap = new Map();
-
-  posts.forEach((post) => {
-    // 获取文章的分类信息，可能是字符串或数组
-    const categories =
-      post.frontmatter.category || post.frontmatter.categories || ['未分类'];
-
-    // 将字符串转换为数组以统一处理
-    const categoryArray = Array.isArray(categories) ? categories : [categories];
-
-    // 统计每个分类的文章数量
-    categoryArray.forEach((category) => {
-      if (category && typeof category === "string") {
-        if (categoryMap.has(category)) {
-          categoryMap.set(category, categoryMap.get(category) + 1);
-        } else {
-          categoryMap.set(category, 1);
-        }
-      }
-    });
-  });
-
-  // 将Map转换为数组形式
-  return Array.from(categoryMap.entries()).map(([name, count]) => ({
-    name,
-    count,
-    // 可以添加该分类的链接
-    link: `/category/${name.toLowerCase().replace(/\s+/g, "-")}`,
-  }));
+  const homePost = posts.find((item) => item?.frontmatter?.layout === "home");
+  const allCategorys = homePost?.frontmatter?.categories?.items || [];
+  return allCategorys;
 }
 
 // 封装获取精选文章的函数

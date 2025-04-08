@@ -1,4 +1,20 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { withBase } from "vitepress";
+import { data as postsData } from "../articles.data";
+const emit = defineEmits(["onChange"]);
+const props = defineProps({
+  category: {
+    type: String,
+    default: "",
+  },
+});
+
+const handleClick = () => {
+  const url = new URL(window.location.href);
+  const type = url.searchParams.get("type");
+  emit("onChange", type);
+};
+</script>
 
 <template>
   <!-- 侧边栏 -->
@@ -6,14 +22,15 @@
     <div class="sidebar-section">
       <h3>作文分类</h3>
       <ul class="category-list">
-        <li><a href="#">记叙文</a></li>
-        <li><a href="#">议论文</a></li>
-        <li><a href="#">说明文</a></li>
-        <li><a href="#">应用文</a></li>
-        <li><a href="#">散文</a></li>
-        <li><a href="#">诗歌</a></li>
-        <li><a href="#">小说</a></li>
-        <li><a href="#">古文鉴赏</a></li>
+        <li v-for="item in postsData.categorys" :key="item.title">
+          <a
+            :href="withBase(item.link)"
+            @click="handleClick"
+            :class="props.category === item.title ? 'active' : ''"
+          >
+            {{ item.title }}
+          </a>
+        </li>
       </ul>
     </div>
 
@@ -32,13 +49,12 @@
       </div>
     </div>
 
-    <div class="sidebar-section">
-      <h3>本周推荐</h3>
+    <div class="sidebar-section" v-if="postsData.featureds?.length">
+      <h3>精选推荐</h3>
       <ul class="category-list">
-        <li><a href="#">《窗外的梧桐》</a></li>
-        <li><a href="#">《论坚持的意义》</a></li>
-        <li><a href="#">《故乡的端午》</a></li>
-        <li><a href="#">《科技与人文》</a></li>
+        <li v-for="item in postsData.featureds" :key="item.url">
+          <a :href="withBase(item.url)">《{{ item.frontmatter.title }}》</a>
+        </li>
       </ul>
     </div>
   </aside>
@@ -59,11 +75,11 @@
 }
 
 .sidebar-section h3 {
-  color: #4A6B7D;
+  color: #4a6b7d;
   font-size: 1.2rem;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #E6D5B8;
+  border-bottom: 1px solid #e6d5b8;
 }
 
 .category-list {
@@ -83,8 +99,28 @@
 }
 
 .category-list a:hover {
-  color: #8BA88E;
+  color: #8ba88e;
   transform: translateX(5px);
+}
+
+.category-list .active {
+  color: #8ba88e;
+  transform: translateX(5px);
+  font-weight: bold;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.category-list .active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 70%;
+  background-color: #8ba88e;
+  border-radius: 2px;
 }
 
 .popular-tags {
@@ -94,8 +130,8 @@
 }
 
 .tag {
-  background-color: #E6D5B8;
-  color: #4A6B7D;
+  background-color: #e6d5b8;
+  color: #4a6b7d;
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
   font-size: 0.9rem;
@@ -104,7 +140,7 @@
 }
 
 .tag:hover {
-  background-color: #8BA88E;
+  background-color: #8ba88e;
   color: white;
 }
 </style>
