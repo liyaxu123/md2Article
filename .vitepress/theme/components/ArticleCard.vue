@@ -32,6 +32,7 @@ const props = defineProps({
     <div
       class="card-image"
       :style="{ backgroundImage: `url(${props.cover})` }"
+      loading="lazy"
     ></div>
     <div class="card-content">
       <span class="category">{{ props.category }}</span>

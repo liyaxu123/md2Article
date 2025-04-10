@@ -10,6 +10,7 @@ const { frontmatter: fm } = useData();
     :style="{
       backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${fm.share.bg})`,
     }"
+    loading="lazy"
   >
     <div class="container">
       <div class="share-content">

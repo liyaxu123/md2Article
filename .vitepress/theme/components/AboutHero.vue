@@ -10,6 +10,7 @@ const { frontmatter: fm } = useData();
     :style="{
       backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${fm.hero.bg})`,
     }"
+    loading="lazy"
   >
     <div class="container">
       <div class="hero-content">
