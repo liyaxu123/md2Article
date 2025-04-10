@@ -46,6 +46,10 @@ categories:
     link: /category?type=诗歌
     details: 优美的文字，表达情感
     icon: bi bi-palette
+  - title: 童话故事
+    link: /category?type=童话故事
+    details: 充满想象力的故事，传递美好与希望
+    icon: bi bi-emoji-smile
 
 latest:
   title: 最新上传
