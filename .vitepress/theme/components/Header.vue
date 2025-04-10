@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { useData, useRoute, useRouter, withBase } from "vitepress";
+import { ref } from "vue";
 const { site } = useData();
 const route = useRoute();
 const router = useRouter();
+const isMenuOpen = ref(false);
 
 const isActive = (link: string) => {
   return route.path === link;
@@ -10,6 +12,14 @@ const isActive = (link: string) => {
 
 const goHome = () => {
   router.go(withBase("/"));
+};
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value;
+};
+
+const closeMenu = () => {
+  isMenuOpen.value = false;
 };
 </script>
 
@@ -20,7 +30,8 @@ const goHome = () => {
         <h1>{{ site.title }}</h1>
         <p>{{ site.description }}</p>
       </div>
-      <nav v-if="site.themeConfig.nav.length">
+      <!-- 桌面端导航 -->
+      <nav class="desktop-nav" v-if="site.themeConfig.nav.length">
         <ul>
           <li v-for="item in site.themeConfig.nav">
             <a
@@ -31,6 +42,32 @@ const goHome = () => {
           </li>
         </ul>
       </nav>
+      <!-- 移动端汉堡菜单按钮 -->
+      <div class="mobile-menu-toggle" @click="toggleMenu">
+        <div class="hamburger" :class="{ 'is-active': isMenuOpen }">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <!-- 移动端下拉菜单 -->
+    <div
+      class="mobile-nav"
+      :class="{ 'is-open': isMenuOpen }"
+      v-if="site.themeConfig.nav.length"
+    >
+      <ul>
+        <li v-for="item in site.themeConfig.nav">
+          <a
+            :href="withBase(item.link)"
+            :class="{ active: isActive(withBase(item.link)) }"
+            @click="closeMenu"
+          >
+            {{ item.text }}
+          </a>
+        </li>
+      </ul>
     </div>
   </header>
 </template>
@@ -98,22 +135,125 @@ nav ul li a.active::after {
   width: 100%;
 }
 
+/* 移动端菜单按钮样式 */
+.mobile-menu-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+.hamburger {
+  width: 30px;
+  height: 24px;
+  position: relative;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: #5a6268;
+  border-radius: 3px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0px;
+}
+
+.hamburger span:nth-child(2) {
+  top: 10px;
+}
+
+.hamburger span:nth-child(3) {
+  top: 20px;
+}
+
+.hamburger.is-active span:nth-child(1) {
+  top: 10px;
+  transform: rotate(135deg);
+}
+
+.hamburger.is-active span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.hamburger.is-active span:nth-child(3) {
+  top: 10px;
+  transform: rotate(-135deg);
+}
+
+/* 移动端下拉菜单样式 */
+.mobile-nav {
+  display: none;
+  background-color: #fff;
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.mobile-nav.is-open {
+  max-height: 330px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-nav ul {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+}
+
+.mobile-nav ul li {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.mobile-nav ul li a {
+  display: block;
+  padding: 8px 0;
+}
+
 @media (max-width: 768px) {
+  header {
+    padding: 8px 0;
+  }
+
   header .container {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 15px;
   }
 
   .logo {
-    margin-bottom: 15px;
-    text-align: center;
+    margin-bottom: 0;
+    text-align: left;
   }
 
-  nav ul {
-    justify-content: center;
+  .logo h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0;
   }
 
-  nav ul li {
-    margin: 0 10px;
+  .logo p {
+    font-size: 0.8rem;
+    margin-top: 2px;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .mobile-nav {
+    display: block;
   }
 }
 </style>
