@@ -48,7 +48,7 @@ categories:
     icon: bi bi-palette
   - title: 童话故事
     link: /category?type=童话故事
-    details: 充满想象力的故事，传递美好与希望
+    details: 美妙的故事，传递美好
     icon: bi bi-emoji-smile
 
 latest:
