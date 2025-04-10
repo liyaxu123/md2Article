@@ -40,14 +40,11 @@ const handleChange = (type) => {
 @media (max-width: 768px) {
   .main-container {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .essay-container {
     grid-template-columns: 1fr;
-  }
-
-  nav ul {
-    display: none;
   }
 }
 </style>
