@@ -8,8 +8,6 @@ export default {
     nav: [
       { text: "首页", link: "/" },
       { text: "分类浏览", link: "/category.html" },
-      { text: "精选推荐", link: "/markdown-examples" },
-      { text: "投稿分享", link: "/markdown-examples" },
       { text: "关于我们", link: "/about.html" },
     ],
 
