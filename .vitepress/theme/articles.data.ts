@@ -5,6 +5,7 @@ export interface Data {
   featureds: any[]; // 精选推荐的文章
   allPosts: any[]; // 所有文章
   categorys: any[]; // 所有的文章分类
+  latests: any[]; // 最新上传的文章
 }
 
 declare const data: Data;
@@ -24,6 +25,13 @@ function getFeaturedPosts(posts: any[], limit: number = 0): any[] {
   return limit > 0 ? featured.slice(0, limit) : featured;
 }
 
+// 封装最新上传文章的函数
+function getLatestPosts(posts: any[], limit: number = 0): any[] {
+  const featured = posts.filter((post) => !post.frontmatter.layout);
+
+  return limit > 0 ? featured.slice(0, limit) : featured;
+}
+
 export default createContentLoader("*.md", {
   includeSrc: true, // 包含原始 markdown 源?
   render: true, // 包含渲染的整页 HTML?
@@ -33,12 +41,13 @@ export default createContentLoader("*.md", {
       featureds: [],
       allPosts: [],
       categorys: [],
+      latests: [],
     };
 
     // 获取所有的文章
     resData.allPosts = rawData
       .sort((a, b) => {
-        return +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date);
+        return +new Date(b.frontmatter.time) - +new Date(a.frontmatter.time);
       })
       .map((posts) => {
         return {
@@ -55,6 +64,9 @@ export default createContentLoader("*.md", {
 
     // 获取精选推荐的文章（最多6篇）
     resData.featureds = getFeaturedPosts(resData.allPosts, 6);
+
+    // 获取最新上传的文章（最多6篇）
+    resData.latests = getLatestPosts(resData.allPosts, 6);
 
     return resData;
   },

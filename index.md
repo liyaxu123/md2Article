@@ -56,43 +56,6 @@ latest:
   action:
     text: 查看更多
     link: /category
-  items:
-    - title: 家乡的变化
-      link: /essay-detail
-      details: 十年光阴，家乡的面貌发生了翻天覆地的变化。曾经的泥泞小路变成了宽阔的柏油马路，矮小的平房变成了高耸的楼房...
-      category: 记叙文
-      author: 赵明
-      time: "2023-06-15"
-    - title: 读《红楼梦》有感
-      link: /essay-detail
-      details: 《红楼梦》不仅是一部家族兴衰史，更是一部封建社会的百科全书。通过贾宝玉和林黛玉的爱情悲剧，曹雪芹展现了...
-      category: 读后感
-      author: 陈静
-      time: "2023-06-12"
-    - title: 论环境保护的重要性
-      link: /essay-detail
-      details: 环境保护不仅关乎我们当代人的生存质量，更关系到子孙后代的福祉。面对日益严峻的环境问题，我们每个人都应该...
-      category: 议论文
-      author: 刘强
-      time: "2023-06-10"
-    - title: 我的理想职业
-      link: /essay-detail
-      details: 每个人都自己的理想职业，而我的理想是成为一名教师。教师是人类灵魂的工程师，能够影响一代又一代的年轻人...
-      category: 议论文
-      author: 杨丽
-      time: "2023-06-08"
-    - title: 秋天的公园
-      link: /essay-detail
-      details: 秋天的公园是一幅绚丽的画卷。金黄的银杏叶，火红的枫叶，还有那深绿的松柏，构成了一幅色彩斑斓的画面...
-      category: 描写文
-      author: 周婷
-      time: "2023-06-05"
-    - title: 互联网对现代生活的影响
-      link: /essay-detail
-      details: 互联网的出现彻底改变了人们的生活方式。从购物、学习到社交、工作，互联网已经渗透到生活的方方面面...
-      category: 议论文
-      author: 郑伟
-      time: "2023-06-03"
 
 share:
   title: 分享你的优秀作文

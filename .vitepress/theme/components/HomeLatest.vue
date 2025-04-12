@@ -2,23 +2,24 @@
 import { useData, withBase } from "vitepress";
 import SimpleArticleCard from "./SimpleArticleCard.vue";
 const { frontmatter: fm } = useData();
+import { data as postsData } from "../articles.data";
 </script>
 
 <template>
   <section class="latest" v-if="fm.latest">
     <div class="container">
       <h2 class="section-title">{{ fm.latest.title }}</h2>
-      <div class="latest-grid" v-if="fm.latest.items.length > 0">
+      <div class="latest-grid" v-if="postsData.latests?.length > 0">
         <!-- 作文卡片 -->
         <SimpleArticleCard
-          v-for="item in fm.latest.items"
-          :key="item.title"
-          :title="item.title"
-          :link="withBase(item.link)"
-          :time="item.time"
-          :category="item.category"
-          :details="item.details"
-          :author="item.author"
+          v-for="item in postsData.latests"
+          :key="item.frontmatter.title"
+          :title="item.frontmatter.title"
+          :link="withBase(item.url)"
+          :time="item.frontmatter.time"
+          :category="item.frontmatter.category"
+          :details="item.frontmatter.details"
+          :author="item.frontmatter.author"
         />
       </div>
       <div class="view-more">
