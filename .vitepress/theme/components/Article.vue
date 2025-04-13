@@ -1,6 +1,7 @@
 <script setup>
 import { useData } from "vitepress";
 const { frontmatter: fm } = useData();
+console.log(fm);
 </script>
 
 <template>
@@ -22,6 +23,11 @@ const { frontmatter: fm } = useData();
             class="article-cover"
             :style="{ backgroundImage: `url(${fm.cover})` }"
           ></div>
+        </div>
+
+        <!-- 音频 -->
+        <div v-if="fm.audio" class="audio-wrap">
+          <audio :src="fm.audio" controls></audio>
         </div>
 
         <!-- 文章内容 -->
@@ -82,6 +88,13 @@ const { frontmatter: fm } = useData();
   border-radius: 5px;
   margin-bottom: 2rem;
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+}
+
+.audio-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
 }
 
 /* 文章内容 */
